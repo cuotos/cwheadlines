@@ -12,6 +12,8 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -33,7 +35,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	morseString := convertToMorse(a.Title)
+	normalizedTitle := normalizeText(a.Title)
+
+	morseString := convertToMorse(normalizedTitle)
 	fmt.Println(morseString)
 
 	correctGuess := false
@@ -42,8 +46,10 @@ func main() {
 		input := bufio.NewScanner(os.Stdin)
 		input.Scan()
 
-		if input.Text() == a.Title {
+		if input.Text() == normalizedTitle {
 			correctGuess = true
+		} else if input.Text() == "giveup" {
+			fmt.Println(a.Title)
 		} else {
 			fmt.Println("Wrong")
 			fmt.Println(morseString)
@@ -51,6 +57,14 @@ func main() {
 	}
 
 	fmt.Println("Correct")
+}
+
+func normalizeText(s string) string {
+	reg, err := regexp.Compile("[^a-zA-Z0-9 ]+")
+	if err != nil {
+		log.Fatal("normalization regex failed")
+	}
+	return strings.ToLower(reg.ReplaceAllString(s, ""))
 }
 
 func convertToMorse(input string) string {
