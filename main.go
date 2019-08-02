@@ -45,7 +45,6 @@ func main() {
 		if input.Text() == a.Title {
 			correctGuess = true
 		} else {
-			fmt.Println(input.Text(), a.Title)
 			fmt.Println("Wrong")
 			fmt.Println(morseString)
 		}
