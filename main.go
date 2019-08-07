@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"cwheadlines/guess"
 	"cwheadlines/models"
 	"cwheadlines/morse"
 	"encoding/json"
@@ -37,26 +38,26 @@ func main() {
 
 	normalizedTitle := normalizeText(a.Title)
 
+
 	morseString := convertToMorse(normalizedTitle)
 	fmt.Println(morseString)
 
-	correctGuess := false
 
-	for !correctGuess {
-		input := bufio.NewScanner(os.Stdin)
-		input.Scan()
 
-		if input.Text() == normalizedTitle {
-			correctGuess = true
-		} else if input.Text() == "giveup" {
-			fmt.Println(a.Title)
+	for {
+		userInput := bufio.NewScanner(os.Stdin)
+		userInput.Scan()
+
+		correct, message := guess.GuessHandler(normalizedTitle, userInput.Text())
+		if correct {
+			break
 		} else {
-			fmt.Println("Wrong")
-			fmt.Println(morseString)
+			fmt.Println(message)
 		}
-	}
 
-	fmt.Println("Correct")
+	}
+	fmt.Println("Well Dome")
+
 }
 
 func normalizeText(s string) string {
@@ -68,7 +69,7 @@ func normalizeText(s string) string {
 }
 
 func convertToMorse(input string) string {
-	return morse.MorseDecode(input)
+	return morse.AsMorse(input)
 }
 
 func getTopStory() (models.Article, error) {
