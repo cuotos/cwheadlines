@@ -1,4 +1,4 @@
-package guess
+package handlers
 
 import (
 	"fmt"
