@@ -1,13 +1,16 @@
 package handlers
 
-import "fmt"
+import (
+	"cwheadlines/problem"
+	"fmt"
+)
 
-func HandleSlashCmds(s string){
+func HandleSlashCmds(s string, p problem.Problem){
 	slashCommand := s[1:]
 
 	switch slashCommand {
 	case "giveup":
-		fmt.Println("giveup")
+		fmt.Println(p.AsString())
 	default:
 	}
 }

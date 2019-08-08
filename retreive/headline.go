@@ -1,4 +1,4 @@
-package headline
+package retreive
 
 import (
 	"cwheadlines/models"

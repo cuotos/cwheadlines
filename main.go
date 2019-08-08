@@ -3,8 +3,7 @@ package main
 import (
 	"bufio"
 	"cwheadlines/handlers"
-	"cwheadlines/headline"
-	"cwheadlines/morse"
+	"cwheadlines/retreive"
 	"cwheadlines/problem"
 	"fmt"
 	"log"
@@ -28,7 +27,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	a, err := headline.GetTopStory()
+	a, err := retreive.GetTopStory()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -45,7 +44,8 @@ func main() {
 
 		if strings.HasPrefix(userInput.Text(), "/") {
 
-			handlers.HandleSlashCmds(userInput.Text())
+			handlers.HandleSlashCmds(userInput.Text(), p)
+
 		} else {
 			correct, message := handlers.GuessHandler(normalizedTitle, userInput.Text())
 
@@ -66,9 +66,5 @@ func normalizeText(s string) string {
 		log.Fatal("normalization regex failed")
 	}
 	return strings.ToLower(reg.ReplaceAllString(s, ""))
-}
-
-func convertToMorse(input string) string {
-	return morse.AsMorse(input)
 }
 

@@ -61,7 +61,7 @@ func TestProblemGenerator(t *testing.T) {
 	}
 }
 
-func TestPrintProblemAsString(t *testing.T) {
+func TestPrintProblemAsMorse(t *testing.T) {
 	tcs := []struct{
 		name string
 		input string
@@ -83,6 +83,28 @@ func TestPrintProblemAsString(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			p := GenerateProblem(tc.input)
 			actual := p.AsMorse()
+			assert.Equal(t, tc.expected, actual)
+		})
+	}
+}
+
+func TestPrintProblemAsString(t *testing.T) {
+	tcs := []struct{
+		name string
+		input string
+		expected string
+	}{
+		{
+			"simple word",
+			"TheInput",
+			"TheInput",
+		},
+	}
+
+	for _, tc := range tcs {
+		t.Run(tc.name, func(t *testing.T) {
+			p := GenerateProblem(tc.input)
+			actual := p.AsString()
 			assert.Equal(t, tc.expected, actual)
 		})
 	}
