@@ -5,6 +5,7 @@ import (
 	"cwheadlines/handlers"
 	"cwheadlines/headline"
 	"cwheadlines/morse"
+	"cwheadlines/problem"
 	"fmt"
 	"log"
 	"math/rand"
@@ -34,8 +35,9 @@ func main() {
 
 	normalizedTitle := normalizeText(a.Title)
 
-	morseString := convertToMorse(normalizedTitle)
-	fmt.Println(morseString)
+	p := problem.GenerateProblem(normalizedTitle)
+
+	fmt.Println(p.AsMorse())
 
 	for {
 		userInput := bufio.NewScanner(os.Stdin)
@@ -56,7 +58,6 @@ func main() {
 
 	}
 	fmt.Println("Well Dome")
-
 }
 
 func normalizeText(s string) string {

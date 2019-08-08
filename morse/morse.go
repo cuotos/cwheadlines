@@ -1,9 +1,5 @@
 package morse
 
-import (
-	"bytes"
-	"strings"
-)
 var runeMorseMap = map[rune]string{
 	'a': ".-",
 	'b': "-...",
@@ -76,20 +72,4 @@ var morseMap = map[string]string{
 
 func RuneToMorse(input rune) string {
 	return runeMorseMap[input]
-}
-
-func AsMorse(input string) string {
-	input = strings.ToLower(input)
-	var buffer bytes.Buffer
-
-	for _, c := range input {
-		key := string(c)
-		_, exists := morseMap[key]
-		if exists {
-			buffer.WriteString(morseMap[key])
-			buffer.WriteString(" / ")
-		}
-	}
-
-	return buffer.String()
 }
