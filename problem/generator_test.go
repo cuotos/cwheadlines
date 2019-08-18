@@ -6,9 +6,9 @@ import (
 )
 
 func TestProblemGenerator(t *testing.T) {
-	tcs := []struct{
-		name string
-		input string
+	tcs := []struct {
+		name     string
+		input    string
 		expected Problem
 	}{
 		{
@@ -62,9 +62,9 @@ func TestProblemGenerator(t *testing.T) {
 }
 
 func TestPrintProblemAsMorse(t *testing.T) {
-	tcs := []struct{
-		name string
-		input string
+	tcs := []struct {
+		name     string
+		input    string
 		expected string
 	}{
 		{
@@ -89,9 +89,9 @@ func TestPrintProblemAsMorse(t *testing.T) {
 }
 
 func TestPrintProblemAsString(t *testing.T) {
-	tcs := []struct{
-		name string
-		input string
+	tcs := []struct {
+		name     string
+		input    string
 		expected string
 	}{
 		{

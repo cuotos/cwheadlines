@@ -8,9 +8,9 @@ import (
 func TestGuessHandler(t *testing.T) {
 
 	tcs := []struct {
-		name           string
-		solution       string
-		input          string
+		name            string
+		solution        string
+		input           string
 		expectedCorrect bool
 	}{
 		{

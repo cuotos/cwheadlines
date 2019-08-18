@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func HandleSlashCmds(s string, p problem.Problem){
+func HandleSlashCmds(s string, p problem.Problem) {
 	slashCommand := s[1:]
 
 	switch slashCommand {

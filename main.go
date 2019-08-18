@@ -3,8 +3,8 @@ package main
 import (
 	"bufio"
 	"cwheadlines/handlers"
-	"cwheadlines/retreive"
 	"cwheadlines/problem"
+	"cwheadlines/retreive"
 	"fmt"
 	"log"
 	"math/rand"
@@ -67,4 +67,3 @@ func normalizeText(s string) string {
 	}
 	return strings.ToLower(reg.ReplaceAllString(s, ""))
 }
-
