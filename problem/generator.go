@@ -2,9 +2,12 @@ package problem
 
 import (
 	"cwheadlines/morse"
+	"cwheadlines/utils"
 )
 
 func GenerateProblem(input string) Problem {
+
+	input = utils.NormalizeText(input)
 
 	p := Problem{}
 
