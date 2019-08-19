@@ -5,8 +5,3 @@ type Character struct {
 	morse    string
 	correct  bool
 }
-
-type key struct {
-	duration int
-	on       bool
-}

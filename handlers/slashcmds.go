@@ -10,7 +10,7 @@ func HandleSlashCmds(s string, p problem.Problem) {
 
 	switch slashCommand {
 	case "giveup":
-		fmt.Println(p.AsString())
+		fmt.Println(p.Solution)
 	default:
 	}
 }

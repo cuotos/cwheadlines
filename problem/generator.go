@@ -11,13 +11,9 @@ func GenerateProblem(input string) Problem {
 
 	p := Problem{}
 
-	for _, r := range input {
-		c := &Character{}
-		c.solution = r
-		c.morse = morse.RuneToMorse(r)
+	p.Solution = input
 
-		p = append(p, c)
-	}
+	p.Morse = morse.StringToKeys(input)
 
 	return p
 }

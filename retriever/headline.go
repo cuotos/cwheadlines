@@ -1,4 +1,4 @@
-package retreive
+package retriever
 
 import (
 	"cwheadlines/models"
@@ -9,6 +9,17 @@ import (
 	"net/http"
 	"os"
 )
+
+type HeadlineRetriever struct{}
+
+func (HeadlineRetriever) GetSolution() (string, error) {
+	story, err := GetTopStory()
+	if err != nil {
+		return "", err
+	}
+
+	return story.Title, nil
+}
 
 func GetTopStory() (models.Article, error) {
 	apiKey, ok := os.LookupEnv("API_KEY")

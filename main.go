@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"cwheadlines/handlers"
 	"cwheadlines/problem"
-	"cwheadlines/retreive"
+	"cwheadlines/retriever"
 	"fmt"
 	"log"
 	"math/rand"
@@ -26,12 +26,14 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	a, err := retreive.GetTopStory()
+	r := retriever.Test{}
+
+	s, err := r.GetSolution()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	p := problem.GenerateProblem(a.Title)
+	p := problem.GenerateProblem(s)
 
 	fmt.Println(p.AsMorse())
 
@@ -44,7 +46,7 @@ func main() {
 			handlers.HandleSlashCmds(userInput.Text(), p)
 
 		} else {
-			correct, message := handlers.GuessHandler(a.Title, userInput.Text())
+			correct, message := handlers.GuessHandler(p.Solution, userInput.Text())
 
 			if correct {
 				break

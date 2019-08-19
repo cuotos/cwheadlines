@@ -5,32 +5,81 @@ import (
 	"testing"
 )
 
-// TODO test letters and characters
-func TestEncode(t *testing.T) {
+func TestInit(t *testing.T) {
+	tcs := []struct {
+		input    rune
+		expected Keys
+	}{
+		{
+			'A',
+			Keys{Dot, InterCharGap, Dash},
+		},
+		{
+			'B',
+			Keys{Dash, InterCharGap, Dot, InterCharGap, Dot, InterCharGap, Dot},
+		},
+	}
+
+	for _, tc := range tcs {
+		actual := runeToKeys[tc.input]
+		assert.Equal(t, tc.expected, actual)
+	}
+}
+
+func TestMorseToKeys(t *testing.T) {
 	tcs := []struct {
 		name     string
 		input    string
-		expected string
+		expected Keys
 	}{
-		{
-			"simple word",
-			"TEST",
-			"- . ... -",
+		{"A",
+			"A",
+			Keys{Dot, InterCharGap, Dash},
+		},
+		{"space",
+			" ",
+			Keys{Key{7, false, " / "}},
+		},
+		{"AB",
+			"AB",
+			[]Key{Dot, InterCharGap, Dash, CharGap, Dash, InterCharGap, Dot, InterCharGap, Dot, InterCharGap, Dot},
 		},
 		{
-			"simple multi word",
-
-			"TEST PARIS",
-			"- . ... - / .--. .- .-. .. ...",
+			"A B",
+			"A B",
+			[]Key{Dot, InterCharGap, Dash, WordGap, Dash, InterCharGap, Dot, InterCharGap, Dot, InterCharGap, Dot},
 		},
 	}
 
 	for _, tc := range tcs {
 		t.Run(tc.name, func(t *testing.T) {
-			actual := Encode(tc.input)
+			actual := StringToKeys(tc.input)
 			assert.Equal(t, tc.expected, actual)
 		})
 	}
 }
 
-// TODO test decoding
+func TestKeysToString(t *testing.T) {
+	tcs := []struct {
+		input    Keys
+		expected string
+	}{
+		{
+			Keys{Dot, InterCharGap, Dash},
+			".-",
+		},
+		{
+			Keys{Dot, InterCharGap, Dash, CharGap, Dot, InterCharGap, Dot},
+			".- ..",
+		},
+		{
+			Keys{Dot, InterCharGap, Dash, WordGap, Dot, InterCharGap, Dot},
+			".- / ..",
+		},
+	}
+
+	for _, tc := range tcs {
+		actual := tc.input.String()
+		assert.Equal(t, tc.expected, actual)
+	}
+}

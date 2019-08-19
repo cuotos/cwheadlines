@@ -15,20 +15,26 @@ func TestGuessHandler(t *testing.T) {
 	}{
 		{
 			"simple correct answer",
-			"solution",
+			"SOLUTION",
 			"solution",
 			true,
 		},
 		{
 			"simple incorrect answer",
-			"solution",
+			"SOLUTION",
 			"wrong",
 			false,
 		},
 		{
 			"correctly guessed first letter",
-			"solution",
+			"SOLUTION",
 			"s",
+			false,
+		},
+		{
+			"odd characters in guess",
+			"SOLUTION",
+			"±§~&^%",
 			false,
 		},
 	}

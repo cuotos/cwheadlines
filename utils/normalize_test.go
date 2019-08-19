@@ -23,9 +23,14 @@ func TestNormalizeText(t *testing.T) {
 			"DAN SAYS I AM AMAZING",
 		},
 		{
-			"Quots 2",
+			"Quotes 2",
 			`Plane lands on road and gets 'pulled over'`,
 			"PLANE LANDS ON ROAD AND GETS PULLED OVER",
+		},
+		{
+			"odd characters",
+			`%$£ %±asd`,
+			"ASD",
 		},
 		// TODO test question marks etc
 		// TODO test multiline input

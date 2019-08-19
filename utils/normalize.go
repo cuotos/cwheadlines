@@ -9,7 +9,8 @@ import (
 func NormalizeText(s string) string {
 	reg, err := regexp.Compile("[^a-zA-Z0-9 ]+")
 	if err != nil {
-		log.Fatal("normalization regex failed")
+		log.Fatal(err)
 	}
-	return strings.ToUpper(reg.ReplaceAllString(s, ""))
+
+	return strings.ToUpper(strings.TrimSpace(reg.ReplaceAllString(s, "")))
 }
