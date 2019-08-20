@@ -104,12 +104,9 @@ func StringToKeys(input string) Keys {
 			keys = append(keys, CharGap)
 			afterChar = false
 		}
-		switch c {
-		case ' ':
-			keys = append(keys, WordGap)
-		default:
-			keys = append(keys, runeToKeys[c]...)
-		}
+
+		keys = append(keys, runeToKeys[c]...)
+
 		afterChar = true
 	}
 
