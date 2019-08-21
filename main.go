@@ -56,5 +56,5 @@ func main() {
 		}
 
 	}
-	fmt.Println("Well Dome")
+	fmt.Println("Well Done")
 }
