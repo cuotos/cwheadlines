@@ -26,7 +26,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	r := retriever.HeadlineRetriever{}
+	r := retriever.BbcRss{}
 
 	s, err := r.GetSolution()
 	if err != nil {
