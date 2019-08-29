@@ -1,7 +1,7 @@
 package problem
 
 import (
-	. "cwheadlines/morse"
+	. "github.com/cuotos/cwheadlines/morse"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

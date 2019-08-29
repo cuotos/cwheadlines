@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"cwheadlines/problem"
+	"github.com/cuotos/cwheadlines/problem"
 	"fmt"
 )
 

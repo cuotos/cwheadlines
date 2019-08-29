@@ -1,7 +1,7 @@
 package problem
 
 import (
-	"cwheadlines/morse"
+	"github.com/cuotos/cwheadlines/morse"
 )
 
 type Problem struct {

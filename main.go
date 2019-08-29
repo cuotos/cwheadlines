@@ -2,9 +2,9 @@ package main
 
 import (
 	"bufio"
-	"cwheadlines/handlers"
-	"cwheadlines/problem"
-	"cwheadlines/retriever"
+	"github.com/cuotos/cwheadlines/handlers"
+	"github.com/cuotos/cwheadlines/problem"
+	"github.com/cuotos/cwheadlines/retriever"
 	"fmt"
 	"log"
 	"math/rand"

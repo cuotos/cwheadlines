@@ -1,7 +1,7 @@
 package retriever
 
 import (
-	"cwheadlines/models"
+	"github.com/cuotos/cwheadlines/models"
 	"encoding/json"
 	"errors"
 	"io/ioutil"

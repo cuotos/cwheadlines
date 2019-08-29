@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"cwheadlines/utils"
+	"github.com/cuotos/cwheadlines/utils"
 )
 
 func GuessHandler(solution, guess string) (bool, string) {

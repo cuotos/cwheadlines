@@ -1,8 +1,8 @@
 package problem
 
 import (
-	"cwheadlines/morse"
-	"cwheadlines/utils"
+	"github.com/cuotos/cwheadlines/morse"
+	"github.com/cuotos/cwheadlines/utils"
 )
 
 func GenerateProblem(input string) Problem {
